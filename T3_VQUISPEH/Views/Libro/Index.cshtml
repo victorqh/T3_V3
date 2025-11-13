@@ -1,0 +1,69 @@
+@model List<T3_VQUISPEH.Models.Libro>
+@{
+    ViewData["Title"] = "Gestión de Libros";
+}
+
+<div class="container mt-4">
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <h2>Gestión de Libros</h2>
+        <a asp-action="Create" class="btn btn-success">
+            <i class="bi bi-plus-circle"></i> Nuevo Libro
+        </a>
+    </div>
+
+    <div class="card shadow">
+        <div class="card-body">
+            <div class="table-responsive">
+                <table class="table table-hover table-striped">
+                    <thead class="table-dark">
+                        <tr>
+                            <th>Título</th>
+                            <th>Autor</th>
+                            <th>Editorial</th>
+                            <th>Año</th>
+                            <th>Páginas</th>
+                            <th>Categoría</th>
+                            <th>Copias</th>
+                            <th style="width: 200px;">Acciones</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @if (Model != null && Model.Count > 0)
+                        {
+                            @foreach (var libro in Model)
+                            {
+                                <tr>
+                                    <td>@libro.Titulo</td>
+                                    <td>@libro.Autor</td>
+                                    <td>@libro.Editorial</td>
+                                    <td>@libro.AnioPublicacion</td>
+                                    <td>@libro.Paginas</td>
+                                    <td>@libro.Categoria</td>
+                                    <td>@libro.Copias</td>
+                                    <td>
+                                        <a asp-action="Edit" asp-route-id="@libro.Id" class="btn btn-sm btn-primary" title="Editar">
+                                            Editar
+                                        </a>
+                                        <form asp-action="Delete" asp-route-id="@libro.Id" method="post" style="display:inline;" 
+                                              onsubmit="return confirm('¿Está seguro de eliminar el libro: @libro.Titulo?');">
+                                            @Html.AntiForgeryToken()
+                                            <button type="submit" class="btn btn-sm btn-danger" title="Eliminar">
+                                                Eliminar
+                                            </button>
+                                        </form>
+                                    </td>
+                                </tr>
+                            }
+                        }
+                        else
+                        {
+                            <tr>
+                                <td colspan="8" class="text-center text-muted">No hay libros registrados</td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>

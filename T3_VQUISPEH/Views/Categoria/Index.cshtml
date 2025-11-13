@@ -1,0 +1,50 @@
+@model List<T3_VQUISPEH.Models.Categoria>
+@{
+    ViewData["Title"] = "Lista de Categorías";
+}
+
+<div class="container mt-4">
+    <div class="d-flex justify-content-between align-items-center mb-3">
+        <h2>Lista de Categorías</h2>
+        <a asp-action="Create" class="btn btn-primary">Nueva categoría</a>
+    </div>
+
+    <div class="card">
+        <div class="card-body">
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>Nombre Categoría</th>
+                        <th>Orden</th>
+                        <th>Descripción</th>
+                        <th style="width: 150px;"></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @if (Model != null && Model.Count > 0)
+                    {
+                        @foreach (var categoria in Model)
+                        {
+                            <tr>
+                                <td>@categoria.NombreCategoria</td>
+                                <td>@categoria.Orden</td>
+                                <td>@categoria.Descripcion</td>
+                                <td>
+                                    <a asp-action="Edit" asp-route-id="@categoria.Id" class="btn btn-sm btn-primary">Editar</a>
+                                    <a asp-action="Delete" asp-route-id="@categoria.Id" class="btn btn-sm btn-danger" 
+                                       onclick="return confirm('¿Está seguro de eliminar esta categoría?')">Eliminar</a>
+                                </td>
+                            </tr>
+                        }
+                    }
+                    else
+                    {
+                        <tr>
+                            <td colspan="4" class="text-center">No hay categorías registradas</td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
