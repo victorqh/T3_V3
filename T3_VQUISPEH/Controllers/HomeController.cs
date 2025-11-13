@@ -5,6 +5,7 @@ using T3_VQUISPEH.Models;
 
 namespace T3_VQUISPEH.Controllers
 {
+
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
@@ -19,17 +20,18 @@ namespace T3_VQUISPEH.Controllers
             return View();
         }
 
-        [Authorize] //auth
+        
+        //auth
         public IActionResult Privacy()
         {
             return View();
         }
-
+        [Authorize]
         public IActionResult Arquitectura()
         {
             return View();
         }
-
+        [Authorize]
         public IActionResult Desarrollo()
         {
             return View();
