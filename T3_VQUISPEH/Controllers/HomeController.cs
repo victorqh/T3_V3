@@ -25,6 +25,16 @@ namespace T3_VQUISPEH.Controllers
             return View();
         }
 
+        public IActionResult Arquitectura()
+        {
+            return View();
+        }
+
+        public IActionResult Desarrollo()
+        {
+            return View();
+        }
+
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
         {

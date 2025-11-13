@@ -70,7 +70,7 @@ namespace T3_VQUISPEH.Controllers
             using (SqlConnection conn = new SqlConnection(_connectionString))
             {
                 string query = @"INSERT INTO Libros (Titulo, Autor, Tema, Editorial, AnioPublicacion, Paginas, Categoria, Material, Copias) 
-                                VALUES (@Titulo, @Autor, @Tema, @Editorial, @AnioPublicacion, @Paginas, @Categoria, @Material, @Copias)";
+                               VALUES (@Titulo, @Autor, @Tema, @Editorial, @AnioPublicacion, @Paginas, @Categoria, @Material, @Copias)";
                 
                 SqlCommand cmd = new SqlCommand(query, conn);
                 cmd.Parameters.AddWithValue("@Titulo", libro.Titulo);
